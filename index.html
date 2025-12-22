@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<title>M ♥ B</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital@0;1&family=Dancing+Script:wght@600&display=swap" rel="stylesheet">
+
+<style>
+body{
+    margin:0;
+    min-height:100vh;
+    background:linear-gradient(180deg,#0b1d26,#1b3b4a,#2c5364);
+    font-family:'Playfair Display',serif;
+    color:#fff;
+    overflow-x:hidden;
+}
+
+/* Glass background */
+.glass-bg{
+    position:fixed;
+    bottom:30px;
+    right:30px;
+    font-size:80px;
+    opacity:0.15;
+    transform:rotate(180deg);
+}
+
+/* Container */
+.container{
+    max-width:900px;
+    margin:60px auto;
+    padding:40px 25px;
+    background:rgba(255,255,255,0.08);
+    backdrop-filter:blur(10px);
+    border-radius:25px;
+    text-align:center;
+    box-shadow:0 0 40px rgba(255,255,255,0.15);
+}
+
+h1{
+    font-family:'Dancing Script',cursive;
+    font-size:3rem;
+    margin-bottom:10px;
+}
+
+.date{
+    font-size:1.1rem;
+    opacity:0.8;
+    margin-bottom:25px;
+}
+
+p{
+    font-size:1.15rem;
+    line-height:1.9;
+    margin-bottom:18px;
+}
+
+/* Heart animation */
+.heart{
+    position:fixed;
+    color:#ff4d6d;
+    font-size:20px;
+    animation:floatUp linear infinite;
+    opacity:0.8;
+}
+
+@keyframes floatUp{
+    from{transform:translateY(100vh) scale(1);}
+    to{transform:translateY(-10vh) scale(1.5);}
+}
+
+/* Snow */
+.snowflake{
+    position:fixed;
+    top:-10px;
+    color:white;
+    animation:fall linear infinite;
+}
+
+@keyframes fall{
+    to{transform:translateY(110vh);}
+}
+
+.signature{
+    margin-top:35px;
+    font-style:italic;
+    font-size:1.2rem;
+}
+
+footer{
+    margin-top:30px;
+    opacity:0.7;
+}
+</style>
+</head>
+
+<body>
+
+<!-- Music -->
+<audio autoplay loop>
+    <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<div class="glass-bg">🍷</div>
+
+<div class="container">
+    <h1>M <span style="color:#ff4d6d;">♥</span> B</h1>
+    <div class="date">30 / 10 / 2025</div>
+
+    <p>Her şey tanıştığımız ilk anla başladı. Önüne kırdığım an, zaman sanki durdu, etrafımızdaki her şey silindi ve sadece seninle ben vardım.</p>
+
+    <p>Konuştuğun her an, senin dünyanda kayboluyordum, ve seni yıllardır tanıyormuşum gibi bir samimiyet vardı.</p>
+
+    <p>Gülerken kısılan gözlerinin içinde kaybolduğum anları sayamam. O anlar, benim yaşadığım en güzel anılarım.</p>
+
+    <p>Her an seninle olmak, senle attığım her adım, yaptığım her şey çok huzur veriyor bana.</p>
+
+    <p>Sana olan sevgimi anlatmaya kelimeler yetmez. Sana tarifsiz derecede aşığım.</p>
+
+    <p><strong>Dilerim ki…</strong><br>
+    birlikte geçireceğimiz yıllar hiç bitmesin,<br>
+    her yeni yıl bizi daha da yakınlaştırsın.</p>
+
+    <p><strong>Yeni yılın kutlu olsun, güzelim.</strong><br>
+    Seninle olmak her şeyin en güzel hali.</p>
+
+    <div class="signature">
+        Bu çatlak seni çok ama çok seviyor ❤️
+    </div>
+
+    <footer>✨ Sonsuz biz ✨</footer>
+</div>
+
+<script>
+// Snow
+for(let i=0;i<40;i++){
+    let s=document.createElement("div");
+    s.className="snowflake";
+    s.innerHTML="❄";
+    s.style.left=Math.random()*100+"vw";
+    s.style.fontSize=(10+Math.random()*20)+"px";
+    s.style.animationDuration=(5+Math.random()*10)+"s";
+    document.body.appendChild(s);
+}
+
+// Hearts
+for(let i=0;i<30;i++){
+    let h=document.createElement("div");
+    h.className="heart";
+    h.innerHTML="♥";
+    h.style.left=Math.random()*100+"vw";
+    h.style.animationDuration=(6+Math.random()*6)+"s";
+    h.style.fontSize=(14+Math.random()*20)+"px";
+    document.body.appendChild(h);
+}
+</script>
+
+</body>
+</html>
