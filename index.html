@@ -11,32 +11,45 @@
 body{
     margin:0;
     min-height:100vh;
-    background:linear-gradient(180deg,#0b1d26,#1b3b4a,#2c5364);
     font-family:'Playfair Display',serif;
     color:#fff;
+    background:
+      radial-gradient(circle at top, rgba(255,255,255,0.15), transparent 40%),
+      linear-gradient(180deg,#8b0000,#0f3d2e,#022c22);
     overflow-x:hidden;
+}
+
+/* Light glow */
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    background:url("https://i.imgur.com/6Z9bQZC.png");
+    opacity:0.08;
+    pointer-events:none;
 }
 
 .container{
     max-width:900px;
     margin:60px auto;
-    padding:40px 25px;
-    background:rgba(255,255,255,0.08);
-    backdrop-filter:blur(10px);
-    border-radius:25px;
+    padding:45px 30px;
+    background:rgba(255,255,255,0.10);
+    backdrop-filter:blur(12px);
+    border-radius:30px;
     text-align:center;
-    box-shadow:0 0 40px rgba(255,255,255,0.15);
+    box-shadow:0 0 60px rgba(255,215,0,0.25);
 }
 
 h1{
     font-family:'Dancing Script',cursive;
-    font-size:3rem;
-    margin-bottom:10px;
+    font-size:3.2rem;
+    margin-bottom:5px;
+    color:#ffdee9;
 }
 
 .date{
     font-size:1.1rem;
-    opacity:0.8;
+    opacity:0.85;
     margin-bottom:25px;
 }
 
@@ -47,24 +60,37 @@ p{
 }
 
 .music-btn{
-    margin:20px auto 30px;
-    padding:12px 25px;
+    margin:20px auto 35px;
+    padding:14px 28px;
     font-size:1rem;
     border:none;
-    border-radius:30px;
+    border-radius:40px;
     cursor:pointer;
-    background:#ff4d6d;
+    background:linear-gradient(45deg,#c0392b,#e74c3c);
     color:white;
+    box-shadow:0 0 15px rgba(231,76,60,0.8);
 }
 
-iframe{
-    display:none;
+iframe{display:none}
+
+/* Snow */
+.snow{
+    position:fixed;
+    top:-10px;
+    color:white;
+    animation:fall linear infinite;
+    opacity:0.9;
 }
 
+@keyframes fall{
+    to{transform:translateY(110vh);}
+}
+
+/* Hearts */
 .heart{
     position:fixed;
     color:#ff4d6d;
-    font-size:20px;
+    font-size:18px;
     animation:floatUp linear infinite;
     opacity:0.8;
 }
@@ -82,7 +108,7 @@ iframe{
     <h1>M <span style="color:#ff4d6d;">♥</span> B</h1>
     <div class="date">30 / 10 / 2025</div>
 
-    <button class="music-btn" onclick="playMusic()">▶ Müziği Başlat</button>
+    <button class="music-btn" onclick="playMusic()">🎶 Müziği Başlat</button>
 
     <p>Her şey tanıştığımız ilk anla başladı. Önüne kırdığım an, zaman sanki durdu, etrafımızdaki her şey silindi ve sadece seninle ben vardım.</p>
 
@@ -92,11 +118,11 @@ iframe{
 
     <p>Her an seninle olmak, senle attığım her adım, yaptığım her şey çok huzur veriyor bana.</p>
 
-    <p>Gözlerin kısıldığında içindeki o parlaklığı görmek için her an zamanı durdurmak, orda saatlerce kalmak istiyorum. Gülümserken oluşan gamzene bakarken kayboluyorum akan bir nehir gibi.</p>
+    <p>Gözlerin kısıldığında içindeki o parlaklığı görmek için her an zamanı durdurmak orda saatlerce kalmak istiyorum. Gülümserken oluşan gamzene bakarken kayboluyorum akan bir nehir gibi.</p>
 
     <p>Senin her hareketinde, her adımında, her şeyinde hep senin yanındayım.</p>
 
-    <p>Sana olan sevgimi, seni ne kadar sevdiğimi anlatmaya çalışsam kelimeler yetmez sayfalar taşar. Sana deliler gibi mi sırılsıklam mı bilmiyorum tarifsiz dercede aşığım.</p>
+    <p>Sana olan sevgimi anlatmaya çalışsam kelimeler yetmez, sayfalar taşar. Sana tarifsiz derecede aşığım.</p>
 
     <p>Her gün daha da fazla büyüyor sana olan sevdam.</p>
 
@@ -104,7 +130,7 @@ iframe{
 
     <p>Hep birlikte geçireceğimiz daha nice yıllara, gülüşünü, gülerken kısılan gözlerini görmek için bir ömür boyu yanımda olmaya hazırım.</p>
 
-    <p><strong>Yeni yılın kutlu olsun, güzelim.</strong>  
+    <p><strong>Yeni yılın kutlu olsun, güzelim.</strong><br>
     Seninle olmak her şeyin en güzel hali.</p>
 
     <p><strong>İyi ki varsın, iyi ki hayatımdasın.</strong></p>
@@ -112,30 +138,38 @@ iframe{
     <p><em>Bu çatlak seni çok ama çok seviyor ❤️</em></p>
 </div>
 
-<!-- YouTube Music -->
 <iframe id="music"
 src="https://www.youtube.com/embed/O6t4DZKl-gQ?enablejsapi=1"
 allow="autoplay"></iframe>
 
 <script>
 function playMusic(){
-    const iframe=document.getElementById("music");
-    iframe.style.display="none";
-    iframe.src += "&autoplay=1";
+    const m=document.getElementById("music");
+    m.src += "&autoplay=1";
+}
+
+// Snow
+for(let i=0;i<45;i++){
+    let s=document.createElement("div");
+    s.className="snow";
+    s.innerHTML="❄";
+    s.style.left=Math.random()*100+"vw";
+    s.style.fontSize=(10+Math.random()*20)+"px";
+    s.style.animationDuration=(5+Math.random()*10)+"s";
+    document.body.appendChild(s);
 }
 
 // Hearts
-for(let i=0;i<30;i++){
+for(let i=0;i<25;i++){
     let h=document.createElement("div");
     h.className="heart";
     h.innerHTML="♥";
     h.style.left=Math.random()*100+"vw";
     h.style.animationDuration=(6+Math.random()*6)+"s";
-    h.style.fontSize=(14+Math.random()*20)+"px";
+    h.style.fontSize=(14+Math.random()*22)+"px";
     document.body.appendChild(h);
 }
 </script>
 
 </body>
 </html>
-
