@@ -17,17 +17,6 @@ body{
     overflow-x:hidden;
 }
 
-/* Glass background */
-.glass-bg{
-    position:fixed;
-    bottom:30px;
-    right:30px;
-    font-size:80px;
-    opacity:0.15;
-    transform:rotate(180deg);
-}
-
-/* Container */
 .container{
     max-width:900px;
     margin:60px auto;
@@ -57,7 +46,21 @@ p{
     margin-bottom:18px;
 }
 
-/* Heart animation */
+.music-btn{
+    margin:20px auto 30px;
+    padding:12px 25px;
+    font-size:1rem;
+    border:none;
+    border-radius:30px;
+    cursor:pointer;
+    background:#ff4d6d;
+    color:white;
+}
+
+iframe{
+    display:none;
+}
+
 .heart{
     position:fixed;
     color:#ff4d6d;
@@ -67,82 +70,58 @@ p{
 }
 
 @keyframes floatUp{
-    from{transform:translateY(100vh) scale(1);}
-    to{transform:translateY(-10vh) scale(1.5);}
-}
-
-/* Snow */
-.snowflake{
-    position:fixed;
-    top:-10px;
-    color:white;
-    animation:fall linear infinite;
-}
-
-@keyframes fall{
-    to{transform:translateY(110vh);}
-}
-
-.signature{
-    margin-top:35px;
-    font-style:italic;
-    font-size:1.2rem;
-}
-
-footer{
-    margin-top:30px;
-    opacity:0.7;
+    from{transform:translateY(100vh);}
+    to{transform:translateY(-10vh);}
 }
 </style>
 </head>
 
 <body>
 
-<!-- Music -->
-<audio autoplay loop>
-    <source src="music.mp3" type="audio/mpeg">
-</audio>
-
-<div class="glass-bg">🍷</div>
-
 <div class="container">
     <h1>M <span style="color:#ff4d6d;">♥</span> B</h1>
     <div class="date">30 / 10 / 2025</div>
 
+    <button class="music-btn" onclick="playMusic()">▶ Müziği Başlat</button>
+
     <p>Her şey tanıştığımız ilk anla başladı. Önüne kırdığım an, zaman sanki durdu, etrafımızdaki her şey silindi ve sadece seninle ben vardım.</p>
 
-    <p>Konuştuğun her an, senin dünyanda kayboluyordum, ve seni yıllardır tanıyormuşum gibi bir samimiyet vardı.</p>
+    <p>Konuştuğun her an, senin dünyanda kayboluyordum, ve seni yıllardır tanıyormuşum gibi bir samimiyet vardı. Her kelimenle içimdeki her şey değişiyordu, her bakışında bir başka dünyaya götürüyordum kendimi.</p>
 
-    <p>Gülerken kısılan gözlerinin içinde kaybolduğum anları sayamam. O anlar, benim yaşadığım en güzel anılarım.</p>
+    <p>Gülerken kısılan gözlerinin içinde kaybolduğum anları sayamam. O anlar, benim yaşadığım en güzel anılarım. Senin gülüşünde aldığım nefes, bir çiçeğin verimsiz bir toprakta filizlenmesi gibi.</p>
 
     <p>Her an seninle olmak, senle attığım her adım, yaptığım her şey çok huzur veriyor bana.</p>
 
-    <p>Sana olan sevgimi anlatmaya kelimeler yetmez. Sana tarifsiz derecede aşığım.</p>
+    <p>Gözlerin kısıldığında içindeki o parlaklığı görmek için her an zamanı durdurmak, orda saatlerce kalmak istiyorum. Gülümserken oluşan gamzene bakarken kayboluyorum akan bir nehir gibi.</p>
 
-    <p><strong>Dilerim ki…</strong><br>
-    birlikte geçireceğimiz yıllar hiç bitmesin,<br>
-    her yeni yıl bizi daha da yakınlaştırsın.</p>
+    <p>Senin her hareketinde, her adımında, her şeyinde hep senin yanındayım.</p>
 
-    <p><strong>Yeni yılın kutlu olsun, güzelim.</strong><br>
+    <p>Sana olan sevgimi, seni ne kadar sevdiğimi anlatmaya çalışsam kelimeler yetmez sayfalar taşar. Sana deliler gibi mi sırılsıklam mı bilmiyorum tarifsiz dercede aşığım.</p>
+
+    <p>Her gün daha da fazla büyüyor sana olan sevdam.</p>
+
+    <p>Sana hayatımın anlamı diyorum, çünkü seninle beraber olmak her şeyin çok daha güzel olduğu bir yer, bir zaman.</p>
+
+    <p>Hep birlikte geçireceğimiz daha nice yıllara, gülüşünü, gülerken kısılan gözlerini görmek için bir ömür boyu yanımda olmaya hazırım.</p>
+
+    <p><strong>Yeni yılın kutlu olsun, güzelim.</strong>  
     Seninle olmak her şeyin en güzel hali.</p>
 
-    <div class="signature">
-        Bu çatlak seni çok ama çok seviyor ❤️
-    </div>
+    <p><strong>İyi ki varsın, iyi ki hayatımdasın.</strong></p>
 
-    <footer>✨ Sonsuz biz ✨</footer>
+    <p><em>Bu çatlak seni çok ama çok seviyor ❤️</em></p>
 </div>
 
+<!-- YouTube Music -->
+<iframe id="music"
+src="https://www.youtube.com/embed/O6t4DZKl-gQ?enablejsapi=1"
+allow="autoplay"></iframe>
+
 <script>
-// Snow
-for(let i=0;i<40;i++){
-    let s=document.createElement("div");
-    s.className="snowflake";
-    s.innerHTML="❄";
-    s.style.left=Math.random()*100+"vw";
-    s.style.fontSize=(10+Math.random()*20)+"px";
-    s.style.animationDuration=(5+Math.random()*10)+"s";
-    document.body.appendChild(s);
+function playMusic(){
+    const iframe=document.getElementById("music");
+    iframe.style.display="none";
+    iframe.src += "&autoplay=1";
 }
 
 // Hearts
