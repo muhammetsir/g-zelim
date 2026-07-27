@@ -4,40 +4,170 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Muhammet ❤️ Buse</title>
+
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
-body{
-font-family:Arial,sans-serif;
-background:linear-gradient(135deg,#0b1026,#29104a,#4b0f63);
-color:white;overflow-x:hidden;
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Segoe UI',sans-serif;
 }
+
+body{
+background:linear-gradient(135deg,#0a0f2c,#2b1055,#5c1b6f);
+color:white;
+overflow-x:hidden;
+}
+
 .hero{
 height:100vh;
-display:flex;align-items:center;justify-content:center;
-text-align:center;padding:20px;
-background:radial-gradient(circle at center,rgba(255,255,255,.08),transparent 50%);
+display:flex;
+justify-content:center;
+align-items:center;
+text-align:center;
+padding:20px;
+position:relative;
 }
-.hero h1{font-size:4rem}
-.hero p{margin-top:15px;font-size:1.2rem}
+
+.hero::before{
+content:"";
+position:absolute;
+width:500px;
+height:500px;
+background:rgba(255,255,255,.05);
+border-radius:50%;
+filter:blur(100px);
+}
+
+.hero-content{
+position:relative;
+z-index:2;
+}
+
+.hero h1{
+font-size:4rem;
+margin-bottom:15px;
+}
+
+.hero p{
+font-size:1.3rem;
+opacity:.9;
+}
+
 .card{
-max-width:1000px;margin:30px auto;padding:25px;
+max-width:1100px;
+margin:30px auto;
+padding:30px;
 background:rgba(255,255,255,.08);
-backdrop-filter:blur(10px);
+backdrop-filter:blur(15px);
+border-radius:25px;
+box-shadow:0 10px 30px rgba(0,0,0,.3);
+}
+
+.card h2{
+margin-bottom:20px;
+}
+
+.counter{
+text-align:center;
+font-size:2rem;
+font-weight:bold;
+}
+
+.gallery{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:20px;
+}
+
+.gallery img{
+width:100%;
+height:350px;
+object-fit:cover;
 border-radius:20px;
+transition:.4s;
+cursor:pointer;
+box-shadow:0 10px 25px rgba(0,0,0,.4);
 }
-.gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:15px}
-.gallery img{width:100%;border-radius:15px}
-.counter{font-size:2rem;text-align:center}
+
+.gallery img:hover{
+transform:scale(1.05);
+}
+
 button{
-padding:12px 20px;border:none;border-radius:999px;cursor:pointer
+padding:12px 25px;
+border:none;
+border-radius:50px;
+cursor:pointer;
+font-size:16px;
+font-weight:bold;
+transition:.3s;
 }
-#reason{text-align:center;margin-top:15px;font-size:1.2rem}
-.star{position:fixed;right:20px;bottom:20px;font-size:32px;cursor:pointer}
+
+button:hover{
+transform:scale(1.05);
+}
+
+#reason{
+text-align:center;
+font-size:22px;
+margin-top:20px;
+}
+
+#letter{
+line-height:1.8;
+font-size:18px;
+margin-top:15px;
+}
+
+.music{
+text-align:center;
+}
+
+.music a{
+color:white;
+font-size:20px;
+text-decoration:none;
+}
+
+.music a:hover{
+color:#ff80c0;
+}
+
+footer{
+text-align:center;
+padding:40px;
+opacity:.8;
+}
+
+.heart{
+position:fixed;
+font-size:20px;
+pointer-events:none;
+animation:fall linear forwards;
+}
+
+@keyframes fall{
+to{
+transform:translateY(100vh);
+opacity:0;
+}
+}
+
+.star{
+position:fixed;
+bottom:20px;
+right:20px;
+font-size:35px;
+cursor:pointer;
+}
 </style>
 </head>
+
 <body>
+
 <section class="hero">
-<div>
+<div class="hero-content">
 <h1>Muhammet ❤️ Buse</h1>
 <p>“Bazı insanlar tesadüf gibi gelir, sonra hayatının en güzel parçası olur.”</p>
 </div>
@@ -49,72 +179,172 @@ padding:12px 20px;border:none;border-radius:999px;cursor:pointer
 </div>
 
 <div class="card">
-<h2>📸 Fotoğraflarımız</h2>
+<h2>📸 Anılarımız</h2>
+
 <div class="gallery">
-<img src="images/foto1.jpg">
-<img src="images/foto2.jpg">
-<img src="images/foto3.jpg">
-<img src="images/foto4.jpg">
+<img src="1000018807.jpg">
+<img src="1000020933.jpg">
+<img src="1000024644.jpg">
+<img src="1000028953.jpg">
 </div>
+
 </div>
 
 <div class="card">
 <h2>❤️ Seni Neden Seviyorum?</h2>
-<center><button onclick="showReason()">Göster</button></center>
+
+<center>
+<button onclick="showReason()">Göster</button>
+</center>
+
 <div id="reason"></div>
+
 </div>
 
 <div class="card">
 <h2>💌 Gizli Mektup</h2>
+
 <button onclick="secret()">Mektubu Aç</button>
+
 <p id="letter"></p>
+
 </div>
 
 <div class="card">
+
 <h2>🎵 Şarkımız</h2>
-<a style="color:white" target="_blank" href="https://music.youtube.com/watch?v=SIX0xp8T19U&si=2fFQ2Yh7qT3_q75v">Şarkımızı Dinle</a>
+
+<div class="music">
+<a target="_blank" href="https://music.youtube.com/watch?v=SIX0xp8T19U&si=2fFQ2Yh7qT3_q75v">
+🎶 Şarkımızı Dinle
+</a>
 </div>
+
+</div>
+
+<div class="card">
+
+<h2>💖 Sana Bir Not</h2>
+
+<p style="font-size:22px;text-align:center;line-height:1.8">
+Hayatta birçok şey değişebilir...
+Ama seni sevdiğim gerçeği değişmeyecek. ❤️
+</p>
+
+</div>
+
+<footer>
+❤️ Muhammet & Buse ❤️
+</footer>
 
 <div class="star" onclick="surprise()">⭐</div>
 
 <script>
-const startDate=new Date("2025-10-30T00:00:00");
+
+const startDate = new Date("2025-03-07T00:00:00");
 
 function updateCounter(){
-const now=new Date();
-const diff=Math.abs(now-startDate);
-const days=Math.floor(diff/86400000);
-const hours=Math.floor(diff/3600000)%24;
-const mins=Math.floor(diff/60000)%60;
-const secs=Math.floor(diff/1000)%60;
-document.getElementById("counter").innerText=days+" gün "+hours+" saat "+mins+" dk "+secs+" sn";
-}
-setInterval(updateCounter,1000);updateCounter();
 
-const reasons=[
+const now = new Date();
+const diff = now - startDate;
+
+const days = Math.floor(diff / (1000*60*60*24));
+const hours = Math.floor(diff/(1000*60*60)) % 24;
+const mins = Math.floor(diff/(1000*60)) % 60;
+const secs = Math.floor(diff/1000) % 60;
+
+document.getElementById("counter").innerHTML=
+`${days} Gün ${hours} Saat ${mins} Dakika ${secs} Saniye`;
+
+}
+
+setInterval(updateCounter,1000);
+updateCounter();
+
+const reasons = [
+
 "Gülüşün için ❤️",
-"Yanımda olduğun için ❤️",
-"Sesin için ❤️",
+"Bakışların için ❤️",
+"Sesini duyunca huzur bulduğum için ❤️",
+"Yanımda kendim olabildiğim için ❤️",
+"Hayatımı güzelleştirdiğin için ❤️",
 "Birlikte gülebildiğimiz için ❤️",
-"Hayatımı güzelleştirdiğin için ❤️"
+"Kalbimin en güzel köşesinde olduğun için ❤️",
+"En yakın arkadaşım olduğun için ❤️",
+"Beni anladığın için ❤️",
+"Sen olduğun için ❤️"
+
 ];
 
 function showReason(){
-document.getElementById("reason").innerText=reasons[Math.floor(Math.random()*reasons.length)];
+
+document.getElementById("reason").innerHTML=
+reasons[Math.floor(Math.random()*reasons.length)];
+
 }
 
 function secret(){
-const pass=prompt("Şifreyi gir");
+
+let pass = prompt("Şifreyi gir");
+
 if(pass==="07.03.2001"){
-document.getElementById("letter").innerText="Buse, hayatıma kattığın her güzel an için teşekkür ederim. Seni çok seviyorum. ❤️";
+
+document.getElementById("letter").innerHTML=`
+
+❤️ Buse ❤️
+
+Sen hayatıma giren en güzel tesadüf oldun.
+
+Birlikte geçen her gün,
+benim için ayrı bir mutluluk.
+
+İyi ki varsın.
+İyi ki benimlesin.
+
+Seni çok seviyorum. ❤️
+
+`;
+
 }else{
-alert("Yanlış şifre");
+
+alert("Yanlış şifre 😅");
+
 }
+
 }
 
 function surprise(){
-alert("Bu evrende en sevdiğim yer senin yanın. ❤️");
+
+alert("Bu evrende en sevdiğim yer senin yanın ❤️");
+
 }
+
+function createHeart(){
+
+const heart=document.createElement("div");
+
+heart.classList.add("heart");
+
+heart.innerHTML="❤️";
+
+heart.style.left=Math.random()*100+"vw";
+
+heart.style.top="-20px";
+
+heart.style.animationDuration=
+(Math.random()*3+2)+"s";
+
+document.body.appendChild(heart);
+
+setTimeout(()=>{
+heart.remove();
+},5000);
+
+}
+
+setInterval(createHeart,600);
+
 </script>
+
 </body>
 </html>
